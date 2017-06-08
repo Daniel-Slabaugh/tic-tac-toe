@@ -1,0 +1,12 @@
+#line-1 {
+	border-bottom: 5px solid black;
+}
+
+#line-2 {
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+}
+
+#line-3 {
+	border-top: 5px solid black;
+}
