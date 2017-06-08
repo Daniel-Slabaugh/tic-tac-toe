@@ -45,8 +45,8 @@ function changeTurn() {
 }
 
 function newGame () {
-  game.squares = [];
-  game.squares.length() = 9;
+  game.squares.length = 0;
+  // game.squares.length = 9;
   game.winner = "no";
   game.movecount = 0;
   game.turn = "x";
@@ -54,23 +54,17 @@ function newGame () {
 
 function checkWinner() {
 
-  if( game.squares[1] == game.turn && game.squares[2] == game.turn && game.squares[3] == game.turn ||   //row-1
-      game.squares[4] == game.turn && game.squares[5] == game.turn && game.squares[6] == game.turn ||   //row-2
-      game.squares[7] == game.turn && game.squares[8] == game.turn && game.squares[9] == game.turn ||   //row-3
-      game.squares[1] == game.turn && game.squares[4] == game.turn && game.squares[7] == game.turn ||   //col-1
-      game.squares[2] == game.turn && game.squares[5] == game.turn && game.squares[8] == game.turn ||   //col-2
-      game.squares[3] == game.turn && game.squares[6] == game.turn && game.squares[9] == game.turn ||   //col-3
-      game.squares[1] == game.turn && game.squares[5] == game.turn && game.squares[9] == game.turn ||   //diagonal-1
-      game.squares[3] == game.turn && game.squares[5] == game.turn && game.squares[7] == game.turn || ) //diagonal-2
+  if( game.squares[1] == game.turn && game.squares[2] == game.turn && game.squares[3] == game.turn || //row-1
+      game.squares[4] == game.turn && game.squares[5] == game.turn && game.squares[6] == game.turn || //row-2
+      game.squares[7] == game.turn && game.squares[8] == game.turn && game.squares[9] == game.turn || //row-3
+      game.squares[1] == game.turn && game.squares[4] == game.turn && game.squares[7] == game.turn || //col-1
+      game.squares[2] == game.turn && game.squares[5] == game.turn && game.squares[8] == game.turn || //col-2
+      game.squares[3] == game.turn && game.squares[6] == game.turn && game.squares[9] == game.turn || //col-3
+      game.squares[1] == game.turn && game.squares[5] == game.turn && game.squares[9] == game.turn || //diagonal-1
+      game.squares[3] == game.turn && game.squares[5] == game.turn && game.squares[7] == game.turn  ) //diagonal-2
   {
     winner = game.turn;
-    alert("Player " + game.turn + " won the game! Congradulations";
+    alert("Player " + game.turn + " won the game! Congradulations");
     newGame();
   }
-
-
-
-  
-
-    )
 }
