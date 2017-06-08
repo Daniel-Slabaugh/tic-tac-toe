@@ -28,3 +28,7 @@
 .btn {
 	margin-top: 20px;
 }
+
+.box {
+	box-sizing: border-box;
+}
