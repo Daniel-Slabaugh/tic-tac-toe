@@ -1,11 +1,6 @@
 
 $(document).ready(function() {
-  var h = $("#b1").width();
-  $("#line-1").height(h);
-  $("#line-2").height(h);
-  $("#line-3").height(h);
-  $('.box').css({"padding-bottom":h});
-
+  resizeTicTacToe();
   newGame();
 
   $(".box").click(function(e) {
@@ -29,6 +24,11 @@ $(document).ready(function() {
   })
 
 });
+
+$( window ).resize(function() {
+  resizeTicTacToe();
+});
+
 
 
 var game = {
@@ -71,4 +71,14 @@ function checkWinner() {
   } else if(game.movecount > 8) {
     $("#winner").text("You tied, guess you're both pretty smart!");
   }
+}
+
+function resizeTicTacToe() {
+  $( "#log" ).append( "<div>Handler for .resize() called.</div>" );
+  var h = $("#b1").width();
+  $("#line-1").height(h);
+  $("#line-2").height(h);
+  $("#line-3").height(h);
+  $('.box').css({"padding-bottom":h});
+  $('.board-box').css({"font-size":h/1.75});
 }
