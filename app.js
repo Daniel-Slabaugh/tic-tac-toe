@@ -4,7 +4,7 @@ $(document).ready(function() {
   $("#line-1").height(h);
   $("#line-2").height(h);
   $("#line-3").height(h);
-  $('.box').css({"padding":h/2});
+  $('.box').css({"padding-bottom":h});
 
   newGame();
 
@@ -12,10 +12,12 @@ $(document).ready(function() {
     var box = parseInt($(this).attr("id").slice(1,2));
     console.log(box);
     if (game.squares[box] == "x" || game.squares[box] == "o") {
-      alert("Someone already played in that spot");
-    } else {
+      alert("Oops, someone already played in that spot");
+    } else if(game.winner == "no") {
       game.squares[box] = game.turn;
-      $(this).find("div").text(game.turn);
+      game.movecount++;
+      $(this).find(".board-box").text(game.turn);
+      checkWinner();
       changeTurn();
     }
     console.log(game.squares);
@@ -37,7 +39,7 @@ var game = {
 }
 
 function changeTurn() {
-  if(game.turn = "x") {
+  if(game.turn == "x") {
     game.turn = "o"
   } else {
     game.turn = "x"
@@ -46,10 +48,11 @@ function changeTurn() {
 
 function newGame () {
   game.squares.length = 0;
-  // game.squares.length = 9;
   game.winner = "no";
   game.movecount = 0;
   game.turn = "x";
+  $(".board-box").text("");
+  $("#winner").text("");
 }
 
 function checkWinner() {
@@ -63,8 +66,9 @@ function checkWinner() {
       game.squares[1] == game.turn && game.squares[5] == game.turn && game.squares[9] == game.turn || //diagonal-1
       game.squares[3] == game.turn && game.squares[5] == game.turn && game.squares[7] == game.turn  ) //diagonal-2
   {
-    winner = game.turn;
-    alert("Player " + game.turn + " won the game! Congradulations");
-    newGame();
+    game.winner = game.turn;
+    $("#winner").text("Player " + game.turn + " won the game. Congratulations!");
+  } else if(game.movecount > 8) {
+    $("#winner").text("You tied, guess you're both pretty smart!");
   }
 }
