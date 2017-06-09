@@ -5,7 +5,6 @@ $(document).ready(function() {
 
   $(".box").click(function(e) {
     var box = parseInt($(this).attr("id").slice(1,2));
-    console.log(box);
     if (game.squares[box] == "x" || game.squares[box] == "o") {
       alert("Oops, someone already played in that spot");
     } else if(game.winner == "no") {
@@ -15,21 +14,17 @@ $(document).ready(function() {
       checkWinner();
       changeTurn();
     }
-    console.log(game.squares);
   })
 
   $("#reset").click(function(e) {
     e.preventDefault();
     newGame();
   })
-
 });
 
 $( window ).resize(function() {
   resizeTicTacToe();
 });
-
-
 
 var game = {
   turn:"x",
@@ -40,9 +35,9 @@ var game = {
 
 function changeTurn() {
   if(game.turn == "x") {
-    game.turn = "o"
+    game.turn = "o";
   } else {
-    game.turn = "x"
+    game.turn = "x";
   }
 }
 
@@ -56,7 +51,6 @@ function newGame () {
 }
 
 function checkWinner() {
-
   if( game.squares[1] == game.turn && game.squares[2] == game.turn && game.squares[3] == game.turn || //row-1
       game.squares[4] == game.turn && game.squares[5] == game.turn && game.squares[6] == game.turn || //row-2
       game.squares[7] == game.turn && game.squares[8] == game.turn && game.squares[9] == game.turn || //row-3
@@ -67,7 +61,7 @@ function checkWinner() {
       game.squares[3] == game.turn && game.squares[5] == game.turn && game.squares[7] == game.turn  ) //diagonal-2
   {
     game.winner = game.turn;
-    $("#winner").text("Player " + game.turn + " won the game. Congratulations!");
+    $("#winner").text(game.turn + " wins the game. Congratulations!");
   } else if(game.movecount > 8) {
     $("#winner").text("You tied, guess you're both pretty smart!");
   }
